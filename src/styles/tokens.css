@@ -1,0 +1,30 @@
+:root {
+  /* Palette — sampled from the landscape */
+  --ink: #07060b;          /* night floor */
+  --night: #0c0a16;        /* deep night blue */
+  --dusk: #1a1430;         /* upper sky */
+  --violet: #6d5c9e;       /* muted violet */
+  --lavender: #bfb2e3;     /* lavender accent */
+  --bone: #eeebf3;         /* off-white text */
+  --bone-2: rgba(238, 235, 243, 0.68);
+  --bone-3: rgba(238, 235, 243, 0.46);
+  --line: rgba(238, 235, 243, 0.16);
+  --line-strong: rgba(238, 235, 243, 0.34);
+
+  /* Type */
+  --f-display: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --t-mono: clamp(10.5px, 0.66vw + 4px, 12px);
+  --t-body: clamp(16px, 0.55vw + 11px, 19px);
+  --t-lede: clamp(18px, 0.7vw + 12px, 23px);
+
+  /* Space */
+  --gutter: clamp(16px, 3.4vw, 56px);
+  --col-gap: clamp(12px, 1.6vw, 28px);
+  --header-h: 64px;
+  --section: clamp(96px, 18vh, 220px);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}

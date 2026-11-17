@@ -1,0 +1,95 @@
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--gutter);
+  color: var(--bone);
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -24px 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(7, 6, 11, 0.92) 0%, rgba(7, 6, 11, 0.6) 55%, rgba(7, 6, 11, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+.site-header.is-scrolled::before { opacity: 1; }
+
+.site-header .wordmark { padding-block: 12px; }
+
+.site-nav ul {
+  display: flex;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.site-nav li + li::before {
+  content: '/';
+  margin-inline: 14px;
+  color: var(--bone-3);
+}
+.site-nav a { padding-block: 12px; }
+.site-nav a::after { bottom: 8px; }
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding-inline: 4px;
+  margin-right: -4px;
+}
+.menu-toggle i {
+  position: relative;
+  width: 18px;
+  height: 7px;
+  border-block: 1px solid currentColor;
+  transition: transform 0.5s var(--ease-out);
+}
+.site-header.is-open .menu-toggle i { transform: scaleY(0.15); }
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  padding: calc(var(--header-h) + 8svh) var(--gutter) 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mobile-menu[hidden] { display: none; }
+.mobile-menu ol { border-top: 1px solid var(--line); }
+.mobile-menu li { border-bottom: 1px solid var(--line); }
+.mobile-menu a {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 18px 0;
+  font-size: clamp(34px, 11vw, 52px);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.mobile-menu a .mono { color: var(--bone-3); }
+.mobile-menu__note { color: var(--bone-3); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-menu:not([hidden]) li { animation: intro-fade 0.7s var(--ease-out) both; }
+  .mobile-menu:not([hidden]) li:nth-child(2) { animation-delay: 0.05s; }
+  .mobile-menu:not([hidden]) li:nth-child(3) { animation-delay: 0.1s; }
+}
+
+@media (max-width: 720px) {
+  .site-nav { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .site-header .wordmark { font-size: 12px; letter-spacing: 0.3em; }
+}

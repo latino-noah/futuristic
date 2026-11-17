@@ -1,0 +1,97 @@
+.crossing {
+  position: relative;
+  height: 290vh;
+  background: var(--ink);
+}
+.crossing__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.crossing__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--night);
+  clip-path: inset(0);
+  will-change: clip-path;
+}
+.crossing__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 62%;
+  transform-origin: 38% 60%;
+}
+
+.crossing__words {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  top: calc(var(--header-h) + 8svh);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  font-size: min(10.4vw, 19svh);
+  font-weight: 300;
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.crossing__word { display: block; }
+.crossing__word--1 { grid-column: 1 / 3; grid-row: 1; justify-self: start; }
+.crossing__word--2 {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  justify-self: center;
+  font-size: var(--t-mono);
+  letter-spacing: 0.4em;
+  line-height: 1;
+  color: var(--lavender);
+  padding-inline: 2em;
+}
+.crossing__word--3 { grid-column: 2 / 4; grid-row: 3; justify-self: end; }
+
+.crossing__label {
+  position: absolute;
+  left: var(--gutter);
+  top: calc(var(--header-h) + 12px);
+  color: var(--bone-2);
+}
+.crossing__readout {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  color: var(--bone-2);
+  font-variant-numeric: tabular-nums;
+}
+.crossing__readout [data-crossing-readout] { color: var(--bone); }
+
+/* Mobile & reduced motion: no pinning, one calm full-height frame */
+@media (max-width: 820px), (prefers-reduced-motion: reduce) {
+  .crossing { height: auto; }
+  .crossing__pin { position: relative; min-height: 560px; }
+}
+@media (max-width: 820px) {
+  .crossing__frame img { object-position: 36% 60%; }
+  .crossing__words {
+    font-size: min(16vw, 12svh);
+    top: calc(var(--header-h) + 6svh);
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+  .crossing__word--1, .crossing__word--3 { grid-column: 1; }
+  .crossing__word--2 { grid-column: 1; justify-self: start; padding-inline: 0.2em 0; }
+  .crossing__label { display: none; }
+}
